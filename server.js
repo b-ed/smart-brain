@@ -8,13 +8,10 @@ const signin = require('./controllers/signin.js');
 const profile = require('./controllers/profile.js');
 const image = require('./controllers/image.js');
 
-const PORT = process.env.PORT;
-const DATABASE_HOST = process.env.DATABASE_HOST;
-
 const db = knex({
     client: 'pg',
     connection: {
-      host : DATABASE_HOST,//'',
+      host : '127.0.0.1',
       user : 'postgres',
       password : '1404',
       database : 'smartbrain'
@@ -42,7 +39,7 @@ app.put('/image', image.handleImage(db))
 app.post('/imageurl', image.handleApiCall)
 
 app.listen(PORT, ()=> {
-    console.log(`app is running on port ${PORT}, db hosted on ${DATABASE_HOST}`);
+    console.log(`app is running on port 30001, db hosted on 127.0.0.1`);
 })
 
 /*
