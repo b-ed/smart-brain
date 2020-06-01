@@ -38,8 +38,8 @@ app.put('/image', image.handleImage(db))
 
 app.post('/imageurl', image.handleApiCall)
 
-app.listen(PORT, ()=> {
-    console.log(`app is running on port 30001, db hosted on 127.0.0.1`);
+app.listen(process.env.PORT || 3000, ()=> {
+    console.log(`app is running on port ${process.env.PORT}, db hosted on 127.0.0.1`);
 })
 
 /*
