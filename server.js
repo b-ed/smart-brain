@@ -2,11 +2,15 @@ const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
-
 const register = require('./controllers/register.js');
 const signin = require('./controllers/signin.js');
 const profile = require('./controllers/profile.js');
 const image = require('./controllers/image.js');
+
+const corsOptions ={
+    origin: 'https://git.heroku.com/enigmatic-brook-30570.git',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
 const db = knex({
     client: 'pg',
@@ -21,7 +25,7 @@ const db = knex({
 
 const app = express();
 
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.get('/', (req, res) => {
